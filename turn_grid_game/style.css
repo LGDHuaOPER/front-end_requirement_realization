@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.center {
+    width: 1200px;
+    height: 1200px;
+    margin: 20px 30px;
+    position: relative;
+    /*background-color: blue;*/
+}
+
+select {
+    display: block;
+    height: 25px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+ul {
+    list-style: square inside url(eg_arrow.gif);
+    float: left;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+ul li {
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 3px;
+}
+
+#startTime,
+#endTime,
+#timeMuch,
+#step1 {
+    font-weight: normal;
+    color: red;
+    font-size: 18px;
+}
+
+#content {
+    width: 800px;
+    height: 800px;
+    float: left;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    /*background-color: red;*/
+}
+
+
+/*表格样式*/
+
+table {
+    width: 800px;
+    height: 800px;
+    border: 1px solid blue;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+table td {
+    border: 1px solid blue;
+}
+
+table td.w10 {
+    width: 80px;
+}
+
+table td.w8 {
+    width: 100px;
+}
+
+table td.w5 {
+    width: 160px;
+}
+
+table td.w4 {
+    width: 200px;
+}
+
+table td:hover {
+    cursor: pointer;
+}
+
+.clickOne {
+    background-color: grey;
+}

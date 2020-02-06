@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>NativeJS-TurnGridGame</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<body>
+    <script>
+    <!--
+    function drawTb(v) {
+    	// 每次切换刷新信息显示
+        var n = 0;
+        document.getElementById("step1").innerHTML = 0;
+        var endTime = document.getElementById("endTime");
+        endTime.innerHTML = "";
+        var timeMuch = document.getElementById("timeMuch");
+        timeMuch.innerHTML = "";
+        
+        if (v != "" || v != null) {
+            document.getElementsByTagName("select")[0].options[0].setAttribute("disabled", "disabled");
+            // 获得开始时间
+            var date = new Date();
+            var y = date.getFullYear();
+            var m = date.getMonth() + 1;
+            var d = date.getDate();
+            var h = date.getHours();
+            var min = date.getMinutes();
+            var s = date.getSeconds();
+            var time1 = date.getTime();
+            document.getElementById("startTime").innerHTML = y + "年" + m + "月" + d + "日" + " " + h + ":" + min + ":" + s;
+            
+            // 删除原先表格
+            var divContent = document.getElementById("content");
+            divContent.innerHTML = "";
+
+            var table = document.createElement("table");
+            var tr = document.createElement("tr");
+            var td = document.createElement("td");
+            vv = Number(v);
+            td.classList.add("w" + vv);
+            // v行v列
+            for (var i = 0; i < vv; i++) {
+                var cloneTr = tr.cloneNode();
+                for (var j = 0; j < vv; j++) {
+                    var cloneTd = td.cloneNode();
+                    cloneTd.innerHTML = j + 1;
+                    cloneTd.index = j;
+                    // cloneTd.addEventListener("click", tdClick,false)
+                    cloneTd.onclick = function() {
+                        // 判断颜色，验证游戏是否结束
+                        var tds = document.getElementsByTagName("td");
+                        var k;
+                        for (k = 0; k < vv * vv; k++) {
+                            if (typeof(tds[k].colorChanged) == "undefined") {
+                                break;
+                            }
+                        }
+                        if (k == vv * vv) {
+                        	// 获得结束时间
+                            var date2 = new Date();
+                            var y2 = date2.getFullYear();
+                            var m2 = date2.getMonth() + 1;
+                            var d2 = date2.getDate();
+                            var h2 = date2.getHours();
+                            var min2 = date2.getMinutes();
+                            var s2 = date2.getSeconds();
+                            var time2 = date2.getTime();
+                            endTime.innerHTML = y2 + "年" + m2 + "月" + d2 + "日" + " " + h2 + ":" + min2 + ":" + s2;
+                            // 计算时间差并显示
+                            var times = (time2 - time1) / 1000;
+                            timeMuch.innerHTML = times;
+                            alert("游戏结束！您总共花了" + n + "步！");
+                            return;
+                        }
+                        n++;
+                        document.getElementById("step1").innerHTML = n;
+                        // 对上下左右4个单元格进行染色
+                        var uptr = this.parentNode.previousSibling;
+                        var downtr = this.parentNode.nextSibling;
+                        var lefttd = this.previousSibling;
+                        var righttd = this.nextSibling;
+                        if (uptr != null) {
+                            var uptd = uptr.childNodes[Number(this.index)];
+                            uptd.classList.add("clickOne");
+                            uptd.colorChanged = true;
+                        }
+                        if (downtr != null) {
+                            var downtd = downtr.childNodes[Number(this.index)];
+                            downtd.classList.add("clickOne");
+                            downtd.colorChanged = true;
+                        }
+                        if (lefttd != null) {
+                            lefttd.classList.add("clickOne");
+                            lefttd.colorChanged = true;
+                        }
+                        if (righttd != null) {
+                            righttd.classList.add("clickOne");
+                            righttd.colorChanged = true;
+                        }
+                    }
+                    cloneTr.appendChild(cloneTd);
+                }
+                table.appendChild(cloneTr);
+            }
+            divContent.appendChild(table);
+        }
+    }
+
+
+    //-->
+    </script>
+    <h1>翻格子游戏</h1>
+    <hr>
+    <div class="center">
+        <h2>请选择游戏模式：</h2>
+        <select onchange="drawTb(this.options[this.options.selectedIndex].value)">
+            <option value="">请选择游戏模式</option>
+            <option value="10">10行10列</option>
+            <option value="8">8行8列</option>
+            <option value="5">5行5列</option>
+            <option value="4">4行4列</option>
+        </select>
+        <!-- 信息显示 -->
+        <ul>
+            <li>开始时间为
+                <div id="startTime"></div>
+            </li>
+            <li>结束时间为
+                <div id="endTime"></div>
+            </li>
+            <li>您共用时&nbsp;<span id="timeMuch"></span>&nbsp;秒</li>
+            <li>您共用&nbsp;<span id="step1"></span>&nbsp;步</li>
+        </ul>
+        <!-- 主体部分 -->
+        <div id="content"></div>
+    </div>
+</body>
+
+</html>
